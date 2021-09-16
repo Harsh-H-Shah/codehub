@@ -8,4 +8,4 @@ const PanelCard = () => {
   )
 }
 
-export default PanelCard;
+export default PanelCard
