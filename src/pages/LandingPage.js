@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import PanelCard from '../components/PanelCard';
+import PanelCard from '../components/PanelCard'
 import CoursesCard from '../components/CoursesCard'
 
 const LandingPage = () => {
@@ -16,4 +16,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage;
+export default LandingPage
