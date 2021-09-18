@@ -7,7 +7,8 @@ module.exports = {
         secondary:{
           lightgray: "#3A4750",
           darkgray:"#303841",
-          red:"#F24D5D"
+          red:"#F24D5D",
+          lightred:"#FF6E7C"
         }
       },
       screens: {
