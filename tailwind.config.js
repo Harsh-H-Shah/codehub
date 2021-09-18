@@ -2,11 +2,6 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      backgroundImage: {
-        'redness':"url('/src/static/Color-palette/Red.png')"
-      }
-    },
     colors:{
         primary: "#FAFAFA",
         secondary:{
@@ -31,7 +26,8 @@ module.exports = {
     },
     boxShadow: {
       '2xl': '0 -20px 70px -12px rgba(0, 0, 0, 0.15)',
-      'xl': '0 0px 50px -5px rgba(0,0,0,0.4)'
+      'xl': '0 0px 50px -5px rgba(0,0,0,0.4)',
+      "3xl": '0 25px 50px 0px rgba(0, 0, 0, 0.25)',
     }
   },
   variants: {
