@@ -84,4 +84,4 @@ const RoadmapPage = () => {
   )
 }
 
-export default RoadmapPage
+export default RoadmapPage;
