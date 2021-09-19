@@ -7,9 +7,9 @@ import TwitterLogo from '../static/social-icons/Twitter.svg'
 
 const Footer = () => {
   return (
-    <div className= 'w-full min-h shadow-2xl font-sans bg-primary p-6' >
-    <div className="flex flex-row-3 justify-around">
-      <div className="flex text-2xl items-start flex-col">
+    <div className= 'w-screen min-h shadow-2xl font-sans bg-primary p-6' >
+    <div className="flex flex-row-3 place-content-between">
+      <div className="flex text-2xl items-start flex-col ml-16">
         <div>Follow us on:</div>
         <div className="flex flex-row mt-5 mb-8">
           < img src = {InstLogo} alt= 'instlogo' className='w-7 h-7' />
@@ -23,7 +23,7 @@ const Footer = () => {
           <span className="text-xl uppercase ml-3">Discord</span>
         </div>
       </div>
-      <div className="flex text-xl items-start flex-col">
+      <div className="flex text-xl items-start flex-col mr-20">
         <div className="text-2xl">Courses</div>
         <div className='mt-3'>Learn Frontend</div>
         <div className='mt-2'>Learn Backend</div>
@@ -31,7 +31,7 @@ const Footer = () => {
         <div className='mt-2'>Learn Hosting</div>
         <div className='mt-2'>Learn Git & Github</div>
       </div>
-      <div className="flex flex-col text-xl items-start">
+      <div className="flex flex-col text-xl items-start mr-16">
         <div className="text-2xl">Resources</div>
         <div className='mt-3'>Study Materials</div>
         <div className='mt-2'>Study Materials</div>

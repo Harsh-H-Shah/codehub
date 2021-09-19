@@ -8,7 +8,8 @@ module.exports = {
           lightgray: "#3A4750",
           darkgray:"#303841",
           red:"#F24D5D",
-          lightred:"#FF6E7C"
+          lightred:"#FF6E7C",
+          brightred:"#F84052",
         }
       },
       screens: {
@@ -27,9 +28,10 @@ module.exports = {
     },
     boxShadow: {
       '2xl': '0 -20px 70px -12px rgba(0, 0, 0, 0.15)',
-      'xl': '0 0px 50px -5px rgba(0,0,0,0.3)',
-      "3xl": '0 25px 50px 0px rgba(0, 0, 0, 0.25)',
-      'md': '0 8px 20px -8px rgba(0, 0, 0, 0.4)'
+      'xl': '0 0px 50px -5px rgba(0,0,0,0.4)',
+      "3xl": '0 25px 50px 0px rgba(0, 0, 0, 0.15)',
+      'md': '0 8px 20px -8px rgba(0, 0, 0, 0.4)',
+      inner: 'inset 0 0 20px 2px rgba(0, 0, 0, 0.3)',
     }
   },
   variants: {
