@@ -27,8 +27,9 @@ module.exports = {
     },
     boxShadow: {
       '2xl': '0 -20px 70px -12px rgba(0, 0, 0, 0.15)',
-      'xl': '0 0px 50px -5px rgba(0,0,0,0.4)',
+      'xl': '0 0px 50px -5px rgba(0,0,0,0.3)',
       "3xl": '0 25px 50px 0px rgba(0, 0, 0, 0.25)',
+      'md': '0 8px 20px -8px rgba(0, 0, 0, 0.4)'
     }
   },
   variants: {
