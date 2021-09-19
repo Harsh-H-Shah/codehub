@@ -9,3 +9,6 @@
   margin: 0px;
   border-sizing: border-box;
 }
+body{
+  overflow-x: hidden;
+}

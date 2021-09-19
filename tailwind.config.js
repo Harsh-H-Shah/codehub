@@ -10,6 +10,7 @@ module.exports = {
           red:"#F24D5D",
           lightred:"#FF6E7C",
           brightred:"#F84052",
+          blue:"#5778FF"
         }
       },
       screens: {
