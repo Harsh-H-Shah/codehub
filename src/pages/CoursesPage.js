@@ -6,7 +6,7 @@ import CoursesCard from '../components/CoursesCard'
 
 const CoursesPage = () => {
     return (
-        <div className='flex flex-col justify-center'>
+        <div className='flex flex-col justify-center bg-primary'>
             <Navbar/>
             {/* <div className='flex flex-row place-content-between'>
                 <div className=' flex place-items-center w-max text-secondary-darkgray font-serif text-5xl justify-start ml-10 pb-32 z-0'>Never put a full stop to learning and growth</div>
