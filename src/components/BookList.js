@@ -1,38 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ListItem from './ListItem';
+import { storage, listRef } from '../firebase';
+import { ref, getDownloadURL, listAll } from 'firebase/storage';
 
 const BookList = () => {
+  const [downurl, setDownurl] = useState('');
+  const [references, setReferences] = useState([]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    listAll(listRef)
+      .then((res) => {
+        const data = res.items;
+        setReferences(data);
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+  }, []);
+
+  function handleSubmit(list, key) {
+    setIndex(key);
+    // console.log(list);
+    getDownloadURL(ref(storage, list))
+      .then((url) => {
+        setDownurl(url);
+      })
+      .catch((error) => {
+        // Handle any errors
+      });
+  }
+  // console.log(references);
+
   return (
     <div className="flex flex-col bg-primary rounded-lg justify-center w-3/4 mt-16 z-20 shadow-pn mb-32">
-      <div className="flex flex-row place-content-between border-b border-secondary-lightgray w-full h-32 border-opacity-10 items-center">
-        <p className='ml-8 text-2xl font-normal'>You dont know JS</p>
-        <button className="w-52 text-2xl h-12 mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary">
-          Read now
-        </button>
-      </div>
-      <div className="flex flex-row place-content-between border-b border-secondary-lightgray w-full h-32 border-opacity-10 items-center">
-        <p className='ml-8 text-2xl font-normal'>You dont know JS</p>
-        <button className="w-52 text-2xl h-12 mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary">
-          Read now
-        </button>
-      </div>
-      <div className="flex flex-row place-content-between border-b border-secondary-lightgray w-full h-32 border-opacity-10 items-center">
-        <p className='ml-8 text-2xl font-normal'>You dont know JS</p>
-        <button className="w-52 text-2xl h-12 mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary">
-          Read now
-        </button>
-      </div>
-      <div className="flex flex-row place-content-between border-b border-secondary-lightgray w-full h-32 border-opacity-10 items-center">
-        <p className='ml-8 text-2xl font-normal'>You dont know JS</p>
-        <button className="w-52 text-2xl h-12 mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary">
-          Read now
-        </button>
-      </div>
-      <div className="flex flex-row place-content-between border-b border-secondary-lightgray w-full h-32 border-opacity-10 items-center">
-        <p className='ml-8 text-2xl font-normal'>You dont know JS</p>
-        <button className="w-52 text-2xl h-12 mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary">
-          Read now
-        </button>
-      </div>
+      {references.map((ref, idx) => {
+        let link = 'gs://' + ref._location.bucket + '/' + ref._location.path_;
+        return (
+          <ListItem
+            title={ref.name.slice(0, -4)}
+            idx={idx}
+            link={link}
+            index={index}
+            downurl={downurl}
+            handleSubmit={handleSubmit}
+          />
+        );
+      })}
     </div>
   );
 };
