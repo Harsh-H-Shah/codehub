@@ -1,40 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-const SignupPage = () => {
-  
+const SignupPage = ({ user, setUser }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [samasya, setSamasya] = useState('');
+
+  const auth = getAuth();
+  const handleSubmit = (e, auth, email, password) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        console.log('Hello');
+        setSamasya('');
+        setUser(userCredential.user)
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        setSamasya(error.message.slice(22, -2));
+        // ..
+      });
+    };
+    // console.log(user);
+    
+  if (user) {
+    return <Redirect to="/" />;
+  }
   return (
-    <div className="bg-primary">
+    <div>
       <Navbar />
       <div className="w-screen flex flex-col justify-center items-center h-5/6">
         <form className="flex flex-col bg-primary shadow-pn  rounded-lg p-7 mt-14 w-2/6 font-sans">
           <div className="font-medium text-3xl text-center">Sign Up</div>
+          {samasya && (
+            <p className="text-md font-sans text-secondary-brightred text-center">
+              {samasya}
+            </p>
+          )}
           <label htmlFor="email" className="mt-5 text-xl">
             Email:
           </label>
           <input
             type="text"
-            id="email"
+            name="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
           <label htmlFor="password" className="mt-5 text-xl">
             Password:
           </label>
           <input
-            type="text"
-            id="pass"
-            className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
-          ></input>
-          <label htmlFor="confirmpass" className="mt-5 text-xl">
-            Confirm password:
-          </label>
-          <input
             type="password"
-            id="confirmpass"
+            name="pass"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
-          <button type='submit' className="mt-8 w-36 h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-xl font-medium">
+          {/* <label htmlFor="confirmpass" className="mt-5 text-xl">
+            Confirm password:
+            </label>
+            <input
+            type="password"
+            name="confirmpass"
+            className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
+          ></input> */}
+          <button
+            type="submit"
+            onClick={(e) => handleSubmit(e, auth, email, password)}
+            className="mt-8 w-36 h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-xl font-medium"
+          >
             Submit
           </button>
           <div className="mt-8 text-xl">

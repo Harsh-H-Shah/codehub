@@ -1,10 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 // import Laptoplogo from '../static/CoverSvg/Laptop.svg'
 import CoursesCard from '../components/CoursesCard'
 
 const CoursesPage = () => {
+    const crops = {title:'html',logo:'../static/cardslogo/HTMLLogo.svg', description:'Html is good', curator:'gayatri'}
+    const info = null;
+    useEffect((info) => {
+        fetch('../db.json')
+        .then(res=>{console.log(res);})
+    }, [])
+    console.log(info);
     return (
         <div className='flex flex-col justify-center bg-primary'>
             <Navbar/>
@@ -14,13 +21,13 @@ const CoursesPage = () => {
             </div> */}
             <div className='m-10 flex flex-col place-self-start'>
                 <div className='text-secondary-darkgray font-serif text-4xl pb-14 py-7'>Frontend Development</div>
-                <CoursesCard/>
+                <CoursesCard title={crops.title} logo={crops.logo} description={crops.description} curator={crops.curator} />
                 <div className='text-secondary-darkgray font-serif text-4xl py-14'>Backend Development</div>
-                <CoursesCard/>
+                <CoursesCard title={crops.title} logo={crops.logo} description={crops.description} curator={crops.curator} />
                 <div className='text-secondary-darkgray font-serif text-4xl py-14'>Database Management</div>
-                <CoursesCard/>
+                <CoursesCard title={crops.title} logo={crops.logo} description={crops.description} curator={crops.curator} />
                 <div className='text-secondary-darkgray font-serif text-4xl py-14'>Git & Github</div>
-                <CoursesCard/>
+                <CoursesCard title={crops.title} logo={crops.logo} description={crops.description} curator={crops.curator} />
             </div>
             <Footer/>
         </div>

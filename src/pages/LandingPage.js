@@ -10,10 +10,10 @@ import Notes from '../static/logos/Noteslogo.svg';
 import Projects from '../static/logos/Projectslogo.svg';
 import Support from '../static/logos/Communitylogo.svg';
 
-const LandingPage = () => {
+const LandingPage = ({ user, setUser }) => {
   return (
     <div className="w-screen flex flex-col justify-center items-center select-none overflow-x-hidden bg-primary">
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <img src={Wave} draggable="false" alt="Wave" className="z-0 w-screen" />
       <div className="w-11/12 flex -mt-96">
         <div className="w-screen flex flex-col justify-self-start z-10">

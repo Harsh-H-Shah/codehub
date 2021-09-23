@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../static/logos/LogoWhite.svg';
 import AccLogo from '../static/Navbar-icons/account_circle.svg';
 import Search from '../static/Navbar-icons/search.svg';
 import { Link } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
 
-const Navbar = () => {
+const Navbar = ({ user, setUser }) => {
+  const [dropdown, setDropdown] = useState(false);
+
+  const auth = getAuth();
+
+  const handleSignout = (e, auth) => {
+    e.preventDefault();
+
+    signOut(auth)
+      .then(() => {
+        console.log('Sign-out successful.');
+        setUser(null);
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <nav className="w-screen flex flex-row place-content-between h-16 shadow-3xl z-10 bg-secondary-red items-center overscroll-none">
       <Link to="/">
@@ -29,13 +46,30 @@ const Navbar = () => {
           />
           <img src={Search} alt="Search" className="mr-2" />
         </div>
-        <Link to="/signup">
-          <img
-            src={AccLogo}
-            alt="Acc-logo"
-            className="ml-8 col-start-9 cursor-pointer"
-          />
-        </Link>
+        {user ? (
+          <div>
+            <img
+              src={AccLogo}
+              alt="Acc-logo"
+              onClick={() => setDropdown(true)}
+              className="ml-8 col-start-9 cursor-pointer"
+            />
+            {dropdown ? (
+              <div>
+                <p>{user.email}</p>
+                <button onClick={(e) => handleSignout(e, auth)}>
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        ) : (
+          <Link to="/signup">
+            <p onClick={() => setUser(null)}>Signup/Login</p>
+          </Link>
+        )}
       </div>
     </nav>
   );
