@@ -9,3 +9,7 @@ const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 
 export const listRef = ref(storage, 'gs://codehub-be37d.appspot.com/books');
+export const frontRef = ref(storage, 'gs://codehub-be37d.appspot.com/videos/frontend' );
+export const backRef = ref(storage, 'gs://codehub-be37d.appspot.com/videos/backend' );
+export const dataBaseRef = ref(storage, 'gs://codehub-be37d.appspot.com/videos/Database' );
+export const gitRef = ref(storage, 'gs://codehub-be37d.appspot.com/videos/Git' );
