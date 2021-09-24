@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { UserContext } from '../context/UserContext';
 import { VideoIdContext } from '../context/VideoIdContext';
@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 const Card = ({ title, index, logo, description, curator }) => {
   const { user, setUser } = useContext(UserContext);
   const { videoId, setVideoId } = useContext(VideoIdContext);
-  const img = fetch(logo)
   const toggleCard = () => {
     if (user) {
       if (videoId) {
@@ -39,11 +38,11 @@ const Card = ({ title, index, logo, description, curator }) => {
   };
 
   return (
-    <div className="w-72 h-86 bg-primary shadow-xl rounded-lg text-secondary-lightgray">
+    <div className="w-72 h-96 bg-primary shadow-xl mr-10 rounded-lg text-secondary-lightgray">
       <div className="flex flex-col m-6 ">
-        <div className="flex flex-row place-content-between">
+        <div className="flex flex-row place-content-between mt-6">
           <p className="mt-4 text-2xl font-semibold">{title}</p>
-          <img src={img} alt="logo" className="w-14 h-16 flex" />
+          <img src={logo} alt="logo" className="w-14 h-16 flex" />
         </div>
         <p className="mt-6">{description}</p>
         <p className="mt-8">Curator :</p>
