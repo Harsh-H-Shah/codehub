@@ -1,22 +1,25 @@
-{
-  "db":[
+
+  const db =[
     {
       "title":"HTML for beginners",
       "logo":"../static/cardslogo/HTMLLogo.svg",
       "description":"The HyperText Markup Language, or HTML is the standard markup language for documents designed to be displayed in a web browser.",
-      "curator":"Traversy media"
+      "curator":"Traversy media",
+      "url" :'gs://codehub-be37d.appspot.com/videos/frontend/HTML Crash Course For Absolute Beginners.mp4'    
     },
     {
       "title":"CSS for beginners",
       "logo":"../static/cardslogo/CSSLogo.svg",
       "description":"CSS is the language we use to style an HTML document.CSS describes how HTML elements should be displayed.",
-      "curator":"Traversy media"
+      "curator":"Traversy media",
+      'url' : "gs://codehub-be37d.appspot.com/videos/frontend/CSS Crash Course For Absolute Beginners.mp4"
     },
     {
       "title":"Javascript",
       "logo":"../static/cardslogo/CSSLogo.svg",
       "description":"JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive.",
-      "curator":"Traversy media"
+      "curator":"Traversy media",
+      "url": "gs://codehub-be37d.appspot.com/videos/frontend/JavaScript Programming - Full Course.mp4"
     },
     {
       "title":"React",
@@ -31,4 +34,5 @@
       "curator":"Traversy media"
     }
   ]
-}
+
+  export default db;

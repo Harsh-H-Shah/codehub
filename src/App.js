@@ -8,8 +8,10 @@ import QuizPage from './pages/QuizPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import './firebase.js';
+import VideoPage from './pages/VideoPage';
 
 function App() {
+  const [videoId, setVideoId] = useState('')
   const [user, setUser] = useState(null);
   return (
       <Router>
@@ -35,6 +37,9 @@ function App() {
             </Route>
             <Route path="/login">
               <LoginPage user={user} setUser={setUser} />
+            </Route>
+            <Route path="/video">
+              <VideoPage videoId={videoId} setVideoId={setVideoId} />
             </Route>
           </Switch>
         </div>
