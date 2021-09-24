@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, { useContext } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import QuizList from '../components/QuizList';
+import { SelectQuizContext } from '../context/SelectQuizContext';
 import Quiz from '../static/CoverSvg/Quiz.svg';
 import PlayQuizPage from './PlayQuizPage';
 
 const QuizPage = () => {
-  const [selectQuiz, setSelectQuiz] = useState(0);
+  const { selectQuiz, setSelectQuiz } = useContext(SelectQuizContext);
   return (
     <div className="flex flex-col justify-center items-center text-secondary-lightgray">
       <Navbar />
@@ -26,7 +27,7 @@ const QuizPage = () => {
             <img src={Quiz} alt="quiz" className="w-5/12 mt-16" />
           </div>
           <p className="text-6xl font-serif font-semibold">Fun Quizzes</p>
-          <QuizList setSelectQuiz={setSelectQuiz} />
+          <QuizList />
           <Footer />
         </>
       )}

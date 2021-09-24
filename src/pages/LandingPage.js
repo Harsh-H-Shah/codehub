@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -10,10 +10,13 @@ import Notes from '../static/logos/Noteslogo.svg';
 import Projects from '../static/logos/Projectslogo.svg';
 import Support from '../static/logos/Communitylogo.svg';
 
-const LandingPage = ({ user, setUser }) => {
+import { LandingCourses } from '../resources/LandingCourses';
+import { UserContext } from '../context/UserContext';
+
+const LandingPage = () => {
   return (
     <div className="w-screen flex flex-col justify-center items-center select-none overflow-x-hidden bg-primary">
-      <Navbar user={user} setUser={setUser} />
+      <Navbar />
       <img src={Wave} draggable="false" alt="Wave" className="z-0 w-screen" />
       <div className="w-11/12 flex -mt-96">
         <div className="w-screen flex flex-col justify-self-start z-10">
@@ -71,10 +74,19 @@ const LandingPage = ({ user, setUser }) => {
         Courses
       </p>
       <div className="flex flex-row place-content-evenly w-screen mb-16">
-        <CoursesCard />
-        <CoursesCard />
-        <CoursesCard />
-        <CoursesCard />
+        {LandingCourses.map((data, index) => {
+          return (
+            <div key={index}>
+              <CoursesCard
+                index={index}
+                title={data.title}
+                logo={data.logo}
+                description={data.description}
+                curator={data.curator}
+              />
+            </div>
+          );
+        })}
       </div>
       <Footer />
     </div>

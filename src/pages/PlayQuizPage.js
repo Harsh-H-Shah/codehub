@@ -4,14 +4,14 @@ import EndScreen from '../components/EndScreen';
 import { Quizzes } from '../resources/Questions';
 
 const PlayQuizPage = ({ selectQuiz }) => {
-  const list = Quizzes[selectQuiz].questions;
+  const list = Quizzes[selectQuiz-1].questions;
   const [score, setScore] = useState(0);
   const [quizState, setQuizState] = useState('display');
   return (
     <div>
       {quizState === 'display' ? (
         <QuestionDisplay
-          selectQuiz={selectQuiz - 1}
+          selectQuiz={selectQuiz}
           setQuizState={setQuizState}
           score={score}
           setScore={setScore}
