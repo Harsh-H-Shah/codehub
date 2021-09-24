@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Card = ({ title, index, logo, description, curator }) => {
   const { user, setUser } = useContext(UserContext);
   const { videoId, setVideoId } = useContext(VideoIdContext);
-
+  const img = fetch(logo)
   const toggleCard = () => {
     if (user) {
       if (videoId) {
@@ -43,7 +43,7 @@ const Card = ({ title, index, logo, description, curator }) => {
       <div className="flex flex-col m-6 ">
         <div className="flex flex-row place-content-between">
           <p className="mt-4 text-2xl font-semibold">{title}</p>
-          <img src={logo} alt="logo" className="w-14 h-16 flex" />
+          <img src={img} alt="logo" className="w-14 h-16 flex" />
         </div>
         <p className="mt-6">{description}</p>
         <p className="mt-8">Curator :</p>

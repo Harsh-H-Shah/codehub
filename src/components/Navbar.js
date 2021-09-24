@@ -84,15 +84,15 @@ const Navbar = () => {
           <img src={Search} alt="Search" className="mr-2" />
         </div>
         {user ? (
-          <div>
+          <div className='flex flex-col'>
             <img
               src={AccLogo}
               alt="Acc-logo"
-              onClick={() => setDropdown(true)}
-              className="ml-8 col-start-9 cursor-pointer"
+              onClick={() => setDropdown(!dropdown)}
+              className="mt-0 mr-5 w-10 h-10 col-start-9 self-end cursor-pointer"
             />
             {dropdown ? (
-              <div>
+              <span className='flex flex-col font-sans rounded-md text-xl w-max h-max p-3 bg-primary -mb-36 z-20'>
                 <p>{user.email}</p>
                 <button
                   onClick={(e) => {
@@ -101,14 +101,16 @@ const Navbar = () => {
                 >
                   <Link to="/">Sign out</Link>
                 </button>
-              </div>
+              </span>
             ) : (
               <></>
             )}
           </div>
         ) : (
           <Link to="/signup">
-            <button>Signup/Login</button>
+            <button className="w-max h-max ml-2 px-4 py-1 bg-secondary-lightred items-center tracking-wide rounded-md text-primary font-sans text-md font-medium">
+              Signup/Login
+            </button>
           </Link>
         )}
       </div>
