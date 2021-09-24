@@ -1,15 +1,42 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router';
+import { UserContext } from '../context/UserContext';
 import { VideoIdContext } from '../context/VideoIdContext';
+import { Link } from 'react-router-dom';
 
-const Card = ({
-  title,
-  index,
-  logo,
-  description,
-  curator
-}) => {
-  const {videoId, setVideoId}  = useContext(VideoIdContext);
+const Card = ({ title, index, logo, description, curator }) => {
+  const { user, setUser } = useContext(UserContext);
+  const { videoId, setVideoId } = useContext(VideoIdContext);
+
+  const toggleCard = () => {
+    if (user) {
+      if (videoId) {
+        return <Redirect to="/video" />;
+      } else {
+        return (
+          <button
+            onClick={() => {
+              setVideoId(index + 1);
+            }}
+            className="mt-8 w-32 h-9 bg-secondary-red items-center rounded-md shadow-md text-primary"
+          >
+            Get Started
+          </button>
+        );
+      }
+    } else {
+      return (
+        <button
+          onClick={() => {
+            setVideoId(index + 1);
+          }}
+          className="mt-8 w-32 h-9 bg-secondary-red items-center rounded-md shadow-md text-primary"
+        >
+          <Link to="/signup">Get Started</Link>
+        </button>
+      );
+    }
+  };
 
   return (
     <div className="w-72 h-86 bg-primary shadow-xl rounded-lg text-secondary-lightgray">
@@ -21,18 +48,7 @@ const Card = ({
         <p className="mt-6">{description}</p>
         <p className="mt-8">Curator :</p>
         <p className="mt-1 font-medium">{curator}</p>
-        {videoId ? (
-          <Redirect to="/video" />
-        ) : (
-          <button
-            onClick={() => {
-              setVideoId(index+1);
-            }}
-            className="mt-8 w-32 h-9 bg-secondary-red items-center rounded-md shadow-md text-primary"
-          >
-            Get Started
-          </button>
-        )}
+        {toggleCard()}
       </div>
     </div>
   );
