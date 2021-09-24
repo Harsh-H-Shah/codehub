@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { Link, Redirect } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { UserContext } from '../context/UserContext';
 
-const SignupPage = ({ user, setUser }) => {
+const SignupPage = () => {
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [samasya, setSamasya] = useState('');
@@ -14,9 +16,9 @@ const SignupPage = ({ user, setUser }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        console.log('Hello');
+        console.log('Signed up');
         setSamasya('');
-        setUser(userCredential.user)
+        setUser(userCredential.user);
         // ...
       })
       .catch((error) => {
@@ -25,9 +27,9 @@ const SignupPage = ({ user, setUser }) => {
         setSamasya(error.message.slice(22, -2));
         // ..
       });
-    };
-    // console.log(user);
-    
+  };
+  // console.log(user);
+
   if (user) {
     return <Redirect to="/" />;
   }

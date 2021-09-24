@@ -37,14 +37,16 @@ const BookList = () => {
       {references.map((ref, idx) => {
         let link = 'gs://' + ref._location.bucket + '/' + ref._location.path_;
         return (
-          <ListItem
-            title={ref.name.slice(0, -4)}
-            idx={idx}
-            link={link}
-            index={index}
-            downurl={downurl}
-            handleSubmit={handleSubmit}
-          />
+          <div key={idx}>
+            <ListItem
+              title={ref.name.slice(0, -4)}
+              idx={idx}
+              link={link}
+              index={index}
+              downurl={downurl}
+              handleSubmit={handleSubmit}
+            />
+          </div>
         );
       })}
     </div>
