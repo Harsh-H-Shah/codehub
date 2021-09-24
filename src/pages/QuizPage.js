@@ -8,12 +8,12 @@ import PlayQuizPage from './PlayQuizPage';
 const QuizPage = () => {
   const [selectQuiz, setSelectQuiz] = useState(0);
   return (
-    <div className="flex flex-col justify-center items-center text-secondary-lightgray">
+    <div className="flex flex-col items-center text-secondary-lightgray w-screen">
       <Navbar />
       {selectQuiz ? (
         <PlayQuizPage selectQuiz={selectQuiz} />
       ) : (
-        <>
+        <div className="flex flex-col w-screen">
           <div className="flex flex-row place-content-between">
             <div className="flex flex-col justify-center -mt-16">
               <p className="text-7xl font-serif font-semibold mb-10">
@@ -25,10 +25,12 @@ const QuizPage = () => {
             </div>
             <img src={Quiz} alt="quiz" className="w-5/12 mt-16" />
           </div>
-          <p className="text-6xl font-serif font-semibold">Fun Quizzes</p>
-          <QuizList setSelectQuiz={setSelectQuiz} />
+          <div className='flex flex-col w-screen'>
+            <p className="text-6xl font-serif font-semibold">Fun Quizzes</p>
+            <QuizList setSelectQuiz={setSelectQuiz} />
+          </div>
           <Footer />
-        </>
+        </div>
       )}
     </div>
   );

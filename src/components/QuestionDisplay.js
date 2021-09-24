@@ -19,31 +19,31 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
     setQuizState('result');
   };
   return (
-    <div>
-      <h1>{list[currentQuestion].title}</h1>
-      <div className="questions">
-        <button
+    <div className='flex flex-col  mt-36 rounded-md w-1/2 text-secondary-darkgray text-2xl p-10 bg-primary shadow-pn'>
+      <h1 className='text-3xl font-medium mb-3'>{list[currentQuestion].title}</h1>
+      <div className="flex flex-col text-left w-full ">
+        <button className='self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red'
           onClick={() => {
             setOptionChosen('optionA');
           }}
         >
           {list[currentQuestion].optionA}
         </button>
-        <button
+        <button className='self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red'
           onClick={() => {
             setOptionChosen('optionB');
           }}
         >
           {list[currentQuestion].optionB}
         </button>
-        <button
+        <button className='self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red'
           onClick={() => {
             setOptionChosen('optionC');
           }}
         >
           {list[currentQuestion].optionC}
         </button>
-        <button
+        <button className='self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red'
           onClick={() => {
             setOptionChosen('optionD');
           }}
@@ -53,11 +53,11 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
       </div>
 
       {currentQuestion == list.length - 1 ? (
-        <button onClick={finishQuiz} id="nextQuestion">
+        <button className='mt-8 w-max h-max p-3 bg-secondary-red items-center rounded-md shadow-md text-primary font-medium' onClick={finishQuiz} >
           Finish Quiz
         </button>
       ) : (
-        <button
+        <button className='mt-8 w-max h-max p-3 bg-secondary-red items-center rounded-md shadow-md text-primary'
           disabled={!optionChosen}
           onClick={nextQuestion}
           id="nextQuestion"
