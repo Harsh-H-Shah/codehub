@@ -1,25 +1,37 @@
-import React from 'react'
-import BookList from '../components/BookList';
+import React, {useState} from 'react';
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import QuizList from '../components/QuizList';
 import Quiz from '../static/CoverSvg/Quiz.svg';
+import PlayQuizPage from './PlayQuizPage';
 
 const QuizPage = () => {
+  const [selectQuiz, setSelectQuiz] = useState(0);
   return (
-    <div className='flex flex-col justify-center items-center text-secondary-lightgray'>
-      <Navbar/>
-      <div className='flex flex-row place-content-between'>
-        <div className='flex flex-col justify-center -mt-16'>
-          <p className='text-7xl font-serif font-semibold mb-10'>Catch it and quiz it!</p>
-          <p className='text-2xl font-sans font-normal ml-2'>Buckle up and unlock your memory.</p>
-        </div>
-      <img src={Quiz} alt="quiz" className='w-5/12 mt-16' />
-      </div>
-      <p className='text-6xl font-serif font-semibold'>Fun Quizzes</p>
-      <BookList/>
-      <Footer/>
+    <div className="flex flex-col justify-center items-center text-secondary-lightgray">
+      <Navbar />
+      {selectQuiz ? (
+        <PlayQuizPage selectQuiz={selectQuiz} />
+      ) : (
+        <>
+          <div className="flex flex-row place-content-between">
+            <div className="flex flex-col justify-center -mt-16">
+              <p className="text-7xl font-serif font-semibold mb-10">
+                Catch it and quiz it!
+              </p>
+              <p className="text-2xl font-sans font-normal ml-2">
+                Buckle up and unlock your memory.
+              </p>
+            </div>
+            <img src={Quiz} alt="quiz" className="w-5/12 mt-16" />
+          </div>
+          <p className="text-6xl font-serif font-semibold">Fun Quizzes</p>
+          <QuizList setSelectQuiz={setSelectQuiz} />
+          <Footer />
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default QuizPage;
