@@ -13,6 +13,7 @@ import Support from '../static/logos/Communitylogo.svg';
 
 import { LandingCourses } from '../resources/LandingCourses';
 import { UserContext } from '../context/UserContext';
+import Panel from '../components/Panel';
 
 const LandingPage = () => {
   const { user, setUser } = useContext(UserContext);
@@ -42,14 +43,7 @@ const LandingPage = () => {
       <p className="mt-40 font-serif text-5xl font-semibold mb-16 text-secondary-lightgray">
         Learn new skills with top educators
       </p>
-      <div className="flex flex-row w-screen bg-secondary-brightred h-72 items-center justify-center shadow-inner">
-        <div className="flex flex-row place-content-between w-2/3">
-          <PanelCard />
-          <PanelCard />
-          <PanelCard />
-          <PanelCard />
-        </div>
-      </div>
+      <Panel />
       <div className="flex flex-row place-content-evenly w-screen mt-16">
         <div className="flex flex-col text-secondary-lightgray font-sans w-64">
           <img src={Notes} alt="Notes" />
