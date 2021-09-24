@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -14,6 +15,7 @@ import { LandingCourses } from '../resources/LandingCourses';
 import { UserContext } from '../context/UserContext';
 
 const LandingPage = () => {
+  const { user, setUser } = useContext(UserContext);
   return (
     <div className="w-screen flex flex-col justify-center items-center select-none overflow-x-hidden bg-primary">
       <Navbar />
@@ -26,9 +28,15 @@ const LandingPage = () => {
           <p className="font-sans text-xl text-primary font-extralight mt-6 tracking-widest">
             Get personalised courses <br /> specially curated for you.
           </p>
-          <button className="w-60 h-14 mt-12 bg-secondary-lightred items-center tracking-wide shadow-md text-primary font-sans text-2xl font-medium">
-            Start learning
-          </button>
+          {user ? (
+            <button className="w-60 h-14 mt-12 bg-secondary-lightred items-center tracking-wide shadow-md text-primary font-sans text-2xl font-medium">
+              <Link to="/courses">Start learning</Link>
+            </button>
+          ) : (
+            <button className="w-60 h-14 mt-12 bg-secondary-lightred items-center tracking-wide shadow-md text-primary font-sans text-2xl font-medium">
+              <Link to="/signup">Start learning</Link>
+            </button>
+          )}
         </div>
       </div>
       <p className="mt-40 font-serif text-5xl font-semibold mb-16 text-secondary-lightgray">

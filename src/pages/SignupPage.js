@@ -8,6 +8,7 @@ const SignupPage = () => {
   const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
   const [samasya, setSamasya] = useState('');
 
   const auth = getAuth();
@@ -19,6 +20,7 @@ const SignupPage = () => {
         console.log('Signed up');
         setSamasya('');
         setUser(userCredential.user);
+        localStorage.setItem('user', JSON.stringify(userCredential.user));
         // ...
       })
       .catch((error) => {
@@ -56,7 +58,7 @@ const SignupPage = () => {
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
           <label htmlFor="password" className="mt-5 text-xl">
-            Password:
+            Create password:
           </label>
           <input
             type="password"
@@ -66,17 +68,27 @@ const SignupPage = () => {
             }}
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
-          {/* <label htmlFor="confirmpass" className="mt-5 text-xl">
+          <label htmlFor="confirmpass" className="mt-5 text-xl">
             Confirm password:
-            </label>
-            <input
+          </label>
+          <input
             type="password"
             name="confirmpass"
+            onChange={(e) => {
+              setConfirmPass(e.target.value);
+            }}
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
-          ></input> */}
+          ></input>
           <button
             type="submit"
-            onClick={(e) => handleSubmit(e, auth, email, password)}
+            onClick={(e) => {
+              if (password === confirmPass) {
+                handleSubmit(e, auth, email, password);
+              } else {
+                e.preventDefault();
+                setSamasya('Passwords did not match');
+              }
+            }}
             className="mt-8 w-36 h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-xl font-medium"
           >
             Submit

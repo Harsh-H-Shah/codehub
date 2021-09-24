@@ -18,10 +18,11 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in
         setUser(userCredential.user);
+        localStorage.setItem('user', JSON.stringify(userCredential.user));
         // ...
       })
       .catch((error) => {
-        setSamasya(error.message);
+        setSamasya(error.message.slice(22, -2));
       });
   };
 

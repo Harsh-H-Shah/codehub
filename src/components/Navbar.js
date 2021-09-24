@@ -50,7 +50,11 @@ const Navbar = () => {
             setVideoId(0);
           }}
         >
-          <Link to="/courses">Courses</Link>
+          {user ? (
+            <Link to="/courses">Courses</Link>
+          ) : (
+            <Link to="/signup">Courses</Link>
+          )}
         </button>
         <Link to="/roadmap">Roadmap</Link>
         <button
@@ -58,9 +62,17 @@ const Navbar = () => {
             setSelectQuiz(0);
           }}
         >
-          <Link to="/quiz">Quizzes</Link>
+          {user ? (
+            <Link to="/quiz">Quizzes</Link>
+          ) : (
+            <Link to="/signup">Quizzes</Link>
+          )}
         </button>
-        <Link to="/books">Books</Link>
+        {user ? (
+          <Link to="/books">Books</Link>
+        ) : (
+          <Link to="/signup">Books</Link>
+        )}
       </div>
       <div className="flex flex-row place-content-between items-center mr-8">
         <div className="w-60 h-8 bg-secondary-lightred rounded-md flex items-center place-content-between">
@@ -82,8 +94,12 @@ const Navbar = () => {
             {dropdown ? (
               <div>
                 <p>{user.email}</p>
-                <button onClick={(e) => handleSignout(e, auth)}>
-                  Sign out
+                <button
+                  onClick={(e) => {
+                    handleSignout(e, auth);
+                  }}
+                >
+                  <Link to="/">Sign out</Link>
                 </button>
               </div>
             ) : (
