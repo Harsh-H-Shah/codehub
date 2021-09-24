@@ -1,10 +1,12 @@
-import React,{useState} from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Redirect } from 'react-router';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { UserContext } from '../context/UserContext';
 
-const LoginPage = ({user, setUser}) => {
+const LoginPage = () => {
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [samasya, setSamasya] = useState('');
@@ -12,21 +14,20 @@ const LoginPage = ({user, setUser}) => {
   const auth = getAuth();
   const handleLogin = (e, auth, email, password) => {
     e.preventDefault();
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    setUser(userCredential.user)
-    // ...
-  })
-  .catch((error) => {
-    setSamasya(error.message);
-  });
-  }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        setUser(userCredential.user);
+        // ...
+      })
+      .catch((error) => {
+        setSamasya(error.message);
+      });
+  };
 
   if (user) {
     return <Redirect to="/" />;
   }
-
 
   return (
     <div>
@@ -45,7 +46,9 @@ signInWithEmailAndPassword(auth, email, password)
           <input
             type="text"
             name="email"
-            onChange={(e)=>{setEmail(e.target.value)}}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
           <label htmlFor="password" className="mt-5 text-xl">
@@ -54,10 +57,15 @@ signInWithEmailAndPassword(auth, email, password)
           <input
             type="password"
             name="pass"
-            onChange={(e)=>{setPassword(e.target.value)}}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
-          <button onClick={(e)=>handleLogin(e, auth, email, password)} className="mt-8 w-36 h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-xl font-medium">
+          <button
+            onClick={(e) => handleLogin(e, auth, email, password)}
+            className="mt-8 w-36 h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-xl font-medium"
+          >
             Submit
           </button>
           <div className="mt-8 text-xl">

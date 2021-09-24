@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Logo from '../static/logos/LogoWhite.svg';
 import AccLogo from '../static/Navbar-icons/account_circle.svg';
 import Search from '../static/Navbar-icons/search.svg';
 import { Link } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
+import { VideoIdContext } from '../context/VideoIdContext';
+import { SelectQuizContext } from '../context/SelectQuizContext';
+import { UserContext } from '../context/UserContext';
 
-const Navbar = ({ user, setUser }) => {
+const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
   const [dropdown, setDropdown] = useState(false);
+  const { videoId, setVideoId } = useContext(VideoIdContext);
+  const { SelectQuiz, setSelectQuiz } = useContext(SelectQuizContext);
 
   const auth = getAuth();
 
@@ -22,19 +28,38 @@ const Navbar = ({ user, setUser }) => {
         // An error happened.
       });
   };
+
   return (
     <nav className="w-screen flex flex-row place-content-between h-16 shadow-3xl z-10 bg-secondary-red items-center overscroll-none">
-      <Link to="/">
-        <img
-          src={Logo}
-          alt="logo"
-          className=" justify-self-start h-10 ml-8"
-        ></img>
-      </Link>
+      <button
+        onClick={() => {
+          setVideoId(0);
+        }}
+      >
+        <Link to="/">
+          <img
+            src={Logo}
+            alt="logo"
+            className=" justify-self-start h-10 ml-8"
+          ></img>
+        </Link>
+      </button>
       <div className="flex flex-row place-content-between w-4/12 text-primary font-sans font-normal text-xl -mr-24">
-        <Link to="/courses">Courses</Link>
+        <button
+          onClick={() => {
+            setVideoId(0);
+          }}
+        >
+          <Link to="/courses">Courses</Link>
+        </button>
         <Link to="/roadmap">Roadmap</Link>
-        <Link to="/quiz">Quizzes</Link>
+        <button
+          onClick={() => {
+            setSelectQuiz(0);
+          }}
+        >
+          <Link to="/quiz">Quizzes</Link>
+        </button>
         <Link to="/books">Books</Link>
       </div>
       <div className="flex flex-row place-content-between items-center mr-8">
@@ -67,7 +92,7 @@ const Navbar = ({ user, setUser }) => {
           </div>
         ) : (
           <Link to="/signup">
-            <p onClick={() => setUser(null)}>Signup/Login</p>
+            <button>Signup/Login</button>
           </Link>
         )}
       </div>

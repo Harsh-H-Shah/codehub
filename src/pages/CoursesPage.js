@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 // import Laptoplogo from '../static/CoverSvg/Laptop.svg'
 import CoursesCard from '../components/CoursesCard';
-import db from '../Db';
+import db from '../resources/Db';
 
 const CoursesPage = () => {
-  const crops = {
-    title: 'html',
-    logo: '../static/cardslogo/HTMLLogo.svg',
-    description: 'Html is good',
-    curator: 'gayatri',
-  };
-  console.log(db);
   return (
     <div className="flex flex-col justify-center bg-primary">
       <Navbar />
@@ -24,44 +17,67 @@ const CoursesPage = () => {
         <div className="text-secondary-darkgray font-serif text-4xl pb-14 py-7">
           Frontend Development
         </div>
-        {db.map((data, index) => {
+        {db.slice(0, 4).map((data, index) => {
           return (
-            <CoursesCard
-              key={index}
-              title={data.title}
-              logo={data.logo}
-              description={data.description}
-              curator={data.curator}
-            />
+            <div key={index}>
+              <CoursesCard
+                index={index}
+                title={data.title}
+                logo={data.logo}
+                description={data.description}
+                curator={data.curator}
+              />
+            </div>
           );
         })}
         <div className="text-secondary-darkgray font-serif text-4xl py-14">
           Backend Development
         </div>
-        <CoursesCard
-          title={crops.title}
-          logo={crops.logo}
-          description={crops.description}
-          curator={crops.curator}
-        />
+        {db.slice(4, 6).map((data, index) => {
+          return (
+            <div key={index}>
+              <CoursesCard
+                index={index + 4}
+                title={data.title}
+                logo={data.logo}
+                description={data.description}
+                curator={data.curator}
+              />
+            </div>
+          );
+        })}
         <div className="text-secondary-darkgray font-serif text-4xl py-14">
           Database Management
         </div>
-        <CoursesCard
-          title={crops.title}
-          logo={crops.logo}
-          description={crops.description}
-          curator={crops.curator}
-        />
+        {db.slice(6, 8).map((data, index) => {
+          return (
+            <div key={index}>
+              <CoursesCard
+                index={index + 6}
+                title={data.title}
+                logo={data.logo}
+                description={data.description}
+                curator={data.curator}
+              />
+            </div>
+          );
+        })}
         <div className="text-secondary-darkgray font-serif text-4xl py-14">
           Git & Github
         </div>
-        <CoursesCard
-          title={crops.title}
-          logo={crops.logo}
-          description={crops.description}
-          curator={crops.curator}
-        />
+        {db.slice(8).map((data, index) => {
+          return (
+            <div key={index}>
+              <CoursesCard
+                index={index + 8}
+                title={data.title}
+                logo={data.logo}
+                description={data.description}
+                curator={data.curator}
+              />
+            </div>
+          );
+        })}
       </div>
       <Footer />
     </div>
