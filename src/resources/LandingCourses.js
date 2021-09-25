@@ -5,14 +5,6 @@ import mysql from '../static/cardslogo/MySQLLogo.svg';
 
 export const LandingCourses = [
   {
-    title: 'React',
-    logo: react,
-    description:
-      'React is a library for creating a user interface, offering more flexibility, popularity and reusable components.',
-    curator: 'freeCodeCamp.org',
-  },
-
-  {
     title: 'Python',
     logo: python,
     description:
@@ -34,5 +26,12 @@ export const LandingCourses = [
     description:
       'MySQL is a database management system for adding, accessing and managing data in a database.',
     curator: 'Programming with Mosh',
+  },
+  {
+    title: 'React',
+    logo: react,
+    description:
+      'React is a library for creating a user interface, offering more flexibility, popularity and reusable components.',
+    curator: 'freeCodeCamp.org',
   },
 ];
