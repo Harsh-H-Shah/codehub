@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { storage, vidRef } from '../firebase';
 import { ref, getDownloadURL, listAll } from 'firebase/storage';
 import { VideoIdContext } from '../context/VideoIdContext';
+import VideoOver from '../components/VideoOver';
 
 const VideoPage = () => {
   const { videoId, setVideoId } = useContext(VideoIdContext);
@@ -15,7 +16,6 @@ const VideoPage = () => {
       .then((res) => {
         const data = res.items;
         setVideoRef(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error('list error', error);
@@ -39,14 +39,24 @@ const VideoPage = () => {
       });
   };
   return (
-    <div>
+    <div className="bg-primary h-screen">
       <Navbar setVideoId={setVideoId} />
-      <h1>Videos</h1>
-      <button onClick={(e) => handleCall(e)}>Start the course</button>
+      <VideoOver />
+      <button onClick={(e) => handleCall(e)}>
+        {loading ? (
+          <div className="w-screen flex justify-center h-96 items-center text-center">
+            <p className=" text-2xl font-sans font-medium rounded-md text-secondary-lightgray border-2 py-2 px-8 border-secondary-lightgray">
+              Start the course
+            </p>
+          </div>
+        ) : (
+          <div></div>
+        )}
+      </button>
       {loading ? (
-        <p>Loading</p>
+        <p></p>
       ) : (
-        <video className="w-screen" controls>
+        <video className="w-screen h-screen -mt-6" controls>
           <source src={downUrl} type="video/mp4"></source>
         </video>
       )}

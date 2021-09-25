@@ -1,7 +1,17 @@
+import html from '../static/cardslogo/HTMLLogo.svg';
+import css from '../static/cardslogo/CSSLogo.svg';
+import Js from '../static/cardslogo/JSLogo.svg';
+import react from '../static/cardslogo/ReactlLogo.svg';
+import python from '../static/cardslogo/PythonLogo.svg';
+import django from '../static/cardslogo/DjangoLogo.svg';
+import mysql from '../static/cardslogo/MySQLLogo.svg';
+import mongo from '../static/cardslogo/MongodbLogo.svg';
+import git from '../static/cardslogo/GithubLogo.svg';
+
 const db = [
   {
     title: 'HTML',
-    logo: '../static/cardslogo/HTMLLogo.svg',
+    logo: html,
     description:
       ' HTML, is a programming language used to describe the structure of information on a webpage. ',
     curator: 'Traversey Media',
@@ -9,7 +19,7 @@ const db = [
 
   {
     title: 'CSS',
-    logo: '../static/cardslogo/CSSLogo.svg',
+    logo: css,
     description:
       'CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts.',
     curator: 'Traversey Media',
@@ -17,15 +27,15 @@ const db = [
 
   {
     title: 'JavaScript',
-    logo: '../static/cardslogo/JSLogo.svg',
+    logo: Js,
     description:
-      'JavaScript helps web developers to make web pages dynamic and interactive by implementing custom client-side scripts.',
+      'JavaScript helps developers to make pages dynamic by implementing custom client-side scripts.',
     curator: 'freeCodeCamp.org',
   },
 
   {
     title: 'React',
-    logo: '../static/cardslogo/ReactLogo.svg',
+    logo: react,
     description:
       'React is a library for creating a user interface, offering more flexibility, popularity and reusable components.',
     curator: 'freeCodeCamp.org',
@@ -33,7 +43,7 @@ const db = [
 
   {
     title: 'Django',
-    logo: '../static/cardslogo/DjangoLogo.svg',
+    logo: django,
     description:
       'Django is a high-level Python web framework that enables rapid development of secure and maintainable websites.',
     curator: 'Programming with Mosh',
@@ -41,33 +51,33 @@ const db = [
 
   {
     title: 'Python',
-    logo: '../static/cardslogo/PythonLogo.svg',
+    logo: python,
     description:
-      'Python helps you to achieve more functions with fewer lines of code. ',
+      'Python helps you to achieve more functions with fewer lines of code. It is very beginner friendly.',
     curator: 'Programming with Mosh',
   },
 
   {
     title: 'MongoDB',
-    logo: '../static/cardslogo/MongodbLogo.svg',
+    logo: mongo,
     description:
-      'MongoDB NoSQL database will help to look upon the fundamentals and the syntax to create, read, update and delete documents/data.',
+      'MongoDB NoSQL database gives the fundamentals and the syntax to create, read, update and delete data.',
     curator: 'Traversey Media',
   },
 
   {
     title: 'MySQL',
-    logo: '../static/cardslogo/MySQLLogo.svg',
+    logo: mysql,
     description:
-      'MySQL is a relational database management system for adding, accessing and managing content in a database.',
+      'MySQL is a database management system for adding, accessing and managing data in a database.',
     curator: 'Programming with Mosh',
   },
 
   {
     title: 'Git',
-    logo: '../static/cardslogo/GithubLogo.svg',
+    logo: git,
     description:
-      "Git is the state-management technology for code changes, which lets you save and retrieve snapshots of every step in development called 'state' ",
+      'Git is for state-management of code changes, which lets you save snapshots of every step in development',
     curator: 'Programming with Mosh',
   },
 ];
