@@ -16,7 +16,7 @@ const QuizPage = () => {
       ) : (
         <div className="flex flex-col w-screen">
           <div className="flex flex-row place-content-between">
-            <div className="flex flex-col justify-center -mt-16">
+            <div className="flex flex-col ml-10 justify-center -mt-16">
               <p className="text-7xl font-serif font-semibold mb-10">
                 Catch it and quiz it!
               </p>
@@ -27,7 +27,7 @@ const QuizPage = () => {
             <img src={Quiz} alt="quiz" className="w-5/12 mt-16" />
           </div>
           <div className='flex flex-col w-screen'>
-            <p className="text-6xl font-serif font-semibold">Fun Quizzes</p>
+            <p className="text-6xl text-center font-serif font-semibold">Fun Quizzes</p>
             <QuizList />
           </div>
           <Footer />
