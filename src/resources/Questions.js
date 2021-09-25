@@ -133,7 +133,7 @@ export const Quizzes = [
         title: 'JavaScript entities start with _______ and end with _________.',
         optionA: 'Semicolon, colon',
         optionB: 'Semicolon, Ampersand',
-        optionC: 'Semicolon, Ampersand',
+        optionC: 'Semicolon, dash',
         optionD: 'Ampersand, semicolon',
         answer: 'optionD',
       },
