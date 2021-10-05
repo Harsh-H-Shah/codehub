@@ -14,5 +14,5 @@ const app = initializeApp({
 
 export const storage = getStorage(app);
 
-export const listRef = ref(storage, 'gs://codehub-be37d.appspot.com/books');
-export const vidRef = ref(storage, 'gs://codehub-be37d.appspot.com/videos');
+export const listRef = ref(storage, 'gs://codehub-f75f5.appspot.com/books');
+export const vidRef = ref(storage, 'gs://codehub-f75f5.appspot.com/videos');
