@@ -7,7 +7,7 @@ import Quiz from '../static/CoverSvg/Quiz.svg';
 import PlayQuizPage from './PlayQuizPage';
 
 const QuizPage = () => {
-  const { selectQuiz, setSelectQuiz } = useContext(SelectQuizContext);
+  const { selectQuiz } = useContext(SelectQuizContext);
   return (
     <div className="flex flex-col items-center text-secondary-lightgray w-screen">
       <Navbar />
@@ -26,8 +26,10 @@ const QuizPage = () => {
             </div>
             <img src={Quiz} alt="quiz" className="w-5/12 mt-16" />
           </div>
-          <div className='flex flex-col w-screen'>
-            <p className="text-6xl text-center font-serif font-semibold">Fun Quizzes</p>
+          <div className="flex flex-col w-screen">
+            <p className="text-6xl text-center font-serif font-semibold">
+              Fun Quizzes
+            </p>
             <QuizList />
           </div>
           <Footer />
