@@ -34,14 +34,16 @@ const LoginPage = () => {
     <div>
       <Navbar />
       <div className="w-screen flex flex-col justify-center items-center h-5/6">
-        <form className="flex flex-col bg-primary shadow-pn  rounded-lg p-7 mt-14 w-2/6 font-sans  ">
-          <div className="font-medium text-3xl text-center">Login</div>
+        <form className="flex flex-col bg-primary shadow-pn  rounded-lg p-7 mt-14 w-5/6 tb:w-4/6 lp:w-3/6 dp:w-2/6 font-sans  ">
+          <div className="font-medium text-xl tb:text-3xl text-center">
+            Login
+          </div>
           {samasya && (
-            <p className="text-md font-sans text-secondary-brightred text-center">
+            <p className="text-sm tb:text-lg font-sans text-secondary-brightred text-center">
               {samasya}
             </p>
           )}
-          <label htmlFor="email" className="mt-5 text-xl">
+          <label htmlFor="email" className="mt-3 tb:mt-5 text-md tb:text-xl">
             Email:
           </label>
           <input
@@ -50,9 +52,9 @@ const LoginPage = () => {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
+            className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
-          <label htmlFor="password" className="mt-5 text-xl">
+          <label htmlFor="password" className="mt-3 tb:mt-5 text-md tb:text-xl">
             Password:
           </label>
           <input
@@ -61,15 +63,15 @@ const LoginPage = () => {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
-            className="mt-2 w-86 h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
+            className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
           <button
             onClick={(e) => handleLogin(e, auth, email, password)}
-            className="mt-8 w-36 h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-xl font-medium"
+            className="mt-4 tb:mt-8 w-28 tb:w-36 h-8 tb:h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-md tb:text-xl font-medium"
           >
             Submit
           </button>
-          <div className="mt-8 text-xl">
+          <div className="mt-3 tb:mt-8 text-md tb:text-xl">
             Need an account?
             <Link to="/signup">
               <span className="cursor-pointer underline underline-secondary-blue text-secondary-blue">
