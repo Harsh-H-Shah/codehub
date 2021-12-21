@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import { Link, Redirect } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -6,9 +6,9 @@ import { UserContext } from '../context/UserContext';
 
 const SignupPage = () => {
   const { user, setUser } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPass, setConfirmPass] = useState('');
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+  const confirmPasswordRef = useRef('');
   const [samasya, setSamasya] = useState('');
 
   const auth = getAuth();
@@ -16,21 +16,16 @@ const SignupPage = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         console.log('Signed up');
         setSamasya('');
         setUser(userCredential.user);
         localStorage.setItem('user', JSON.stringify(userCredential.user));
-        // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        console.log(errorCode);
+        console.error(error);
         setSamasya(error.message.slice(22, -2));
-        // ..
       });
   };
-  // console.log(user);
 
   if (user) {
     return <Redirect to="/" />;
@@ -54,9 +49,7 @@ const SignupPage = () => {
           <input
             type="text"
             name="email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            ref={emailRef}
             className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-2 tb:p-4"
           ></input>
           <label htmlFor="password" className="mt-3 tb:mt-5 text-md tb:text-xl">
@@ -65,9 +58,7 @@ const SignupPage = () => {
           <input
             type="password"
             name="pass"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            ref={passwordRef}
             className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-2 tb:p-4"
           ></input>
           <label
@@ -79,16 +70,21 @@ const SignupPage = () => {
           <input
             type="password"
             name="confirmpass"
-            onChange={(e) => {
-              setConfirmPass(e.target.value);
-            }}
+            ref={confirmPasswordRef}
             className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-2 tb:p-4"
           ></input>
           <button
             type="submit"
             onClick={(e) => {
-              if (password === confirmPass) {
-                handleSubmit(e, auth, email, password);
+              if (
+                passwordRef.current.value === confirmPasswordRef.current.value
+              ) {
+                handleSubmit(
+                  e,
+                  auth,
+                  emailRef.current.value,
+                  passwordRef.current.value
+                );
               } else {
                 e.preventDefault();
                 setSamasya('Passwords did not match');

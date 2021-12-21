@@ -8,7 +8,7 @@ import { UserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   return (
     <div className="w-screen min-h shadow-2xl font-sans bg-primary p-6">
       <div className="flex flex-row-3 place-content-between">

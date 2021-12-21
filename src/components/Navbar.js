@@ -11,8 +11,8 @@ import { UserContext } from '../context/UserContext';
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
   const [dropdown, setDropdown] = useState(false);
-  const { videoId, setVideoId } = useContext(VideoIdContext);
-  const { SelectQuiz, setSelectQuiz } = useContext(SelectQuizContext);
+  const { setVideoId } = useContext(VideoIdContext);
+  const { setSelectQuiz } = useContext(SelectQuizContext);
 
   const auth = getAuth();
 
@@ -22,10 +22,11 @@ const Navbar = () => {
     signOut(auth)
       .then(() => {
         console.log('Sign-out successful.');
+        localStorage.removeItem('user');
         setUser(null);
       })
       .catch((error) => {
-        // An error happened.
+        console.error('An error happened while signing out: ', error);
       });
   };
 
@@ -84,7 +85,7 @@ const Navbar = () => {
           <img src={Search} alt="Search" className="mr-2" />
         </div>
         {user ? (
-          <div className='flex flex-col'>
+          <div className="flex flex-col">
             <img
               src={AccLogo}
               alt="Acc-logo"
@@ -92,7 +93,7 @@ const Navbar = () => {
               className="mt-0 mr-5 w-10 h-10 col-start-9 self-end cursor-pointer"
             />
             {dropdown ? (
-              <span className='flex flex-col font-sans rounded-md text-xl w-max h-max p-3 bg-primary -mb-36 z-20'>
+              <span className="flex flex-col font-sans rounded-md text-xl w-max h-max p-3 bg-primary -mb-36 z-20">
                 <p>{user.email}</p>
                 <button
                   onClick={(e) => {

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { SelectQuizContext } from '../context/SelectQuizContext';
 
 const EndScreen = ({ score, setScore, setQuizState, list }) => {

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import PanelCard from '../components/PanelCard';
 import CoursesCard from '../components/CoursesCard';
 
 import Wave from '../static/CoverSvg/WaveSVG.svg';
@@ -16,7 +15,7 @@ import { UserContext } from '../context/UserContext';
 import Panel from '../components/Panel';
 
 const LandingPage = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   return (
     <div className="w-screen flex flex-col justify-center items-center select-none overflow-x-hidden bg-primary">
       <Navbar />
