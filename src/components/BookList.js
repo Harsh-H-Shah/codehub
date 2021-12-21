@@ -15,22 +15,20 @@ const BookList = () => {
         setReferences(data);
       })
       .catch((error) => {
-        // Uh-oh, an error occurred!
+        alert(error);
       });
   }, []);
 
   function handleSubmit(list, key) {
     setIndex(key);
-    // console.log(list);
     getDownloadURL(ref(storage, list))
       .then((url) => {
         setDownurl(url);
       })
       .catch((error) => {
-        // Handle any errors
+        alert(error);
       });
   }
-  // console.log(references);
 
   return (
     <div className="flex flex-col bg-primary rounded-lg justify-center w-3/4 mt-16 z-20 shadow-pn mb-32">

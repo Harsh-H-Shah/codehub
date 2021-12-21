@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router';
 import { UserContext } from '../context/UserContext';
 import { VideoIdContext } from '../context/VideoIdContext';
 import { Link } from 'react-router-dom';
 
 const Card = ({ title, index, logo, description, curator }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { videoId, setVideoId } = useContext(VideoIdContext);
-  const toggleCard = () => {
+  const getStartedBtn = () => {
     if (user) {
       if (videoId) {
         return <Redirect to="/video" />;
@@ -47,7 +47,7 @@ const Card = ({ title, index, logo, description, curator }) => {
         <p className="mt-6">{description}</p>
         <p className="mt-8">Curator :</p>
         <p className="mt-1 font-medium">{curator}</p>
-        {toggleCard()}
+        {getStartedBtn()}
       </div>
     </div>
   );

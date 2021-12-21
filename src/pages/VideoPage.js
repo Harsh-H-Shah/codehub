@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { storage, vidRef } from '../firebase';
 import { ref, getDownloadURL, listAll } from 'firebase/storage';
 import { VideoIdContext } from '../context/VideoIdContext';
-import VideoOver from '../components/VideoOver';
 
 const VideoPage = () => {
   const { videoId, setVideoId } = useContext(VideoIdContext);
@@ -30,7 +29,6 @@ const VideoPage = () => {
     console.log(link);
     getDownloadURL(ref(storage, link))
       .then((url) => {
-        console.log('harsh', url);
         setDownUrl(url);
         setLoading(false);
       })
@@ -41,7 +39,6 @@ const VideoPage = () => {
   return (
     <div className="bg-primary h-screen">
       <Navbar setVideoId={setVideoId} />
-      <VideoOver />
       <button onClick={(e) => handleCall(e)}>
         {loading ? (
           <div className="w-screen flex justify-center h-96 items-center text-center">

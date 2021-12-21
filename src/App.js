@@ -1,7 +1,7 @@
 import LandingPage from './pages/LandingPage';
 import CoursesPage from './pages/CoursesPage';
 import RoadmapPage from './pages/RoadmapPage';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import BooksPage from './pages/BooksPage';
 import QuizPage from './pages/QuizPage';
@@ -17,6 +17,12 @@ function App() {
   const [videoId, setVideoId] = useState(0);
   const [selectQuiz, setSelectQuiz] = useState(0);
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      setUser(JSON.parse(localStorage.getItem('user')));
+      console.log(user);
+    }
+  }, []);
   return (
     <Router>
       <div className="App select-none">
@@ -25,7 +31,7 @@ function App() {
             <VideoIdContext.Provider value={{ videoId, setVideoId }}>
               <SelectQuizContext.Provider value={{ selectQuiz, setSelectQuiz }}>
                 <Route exact path="/">
-                  <LandingPage user={user} setUser={setUser} />
+                  <LandingPage />
                 </Route>
                 <Route path="/courses">
                   <CoursesPage />

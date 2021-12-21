@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Redirect } from 'react-router';
@@ -7,8 +7,8 @@ import { UserContext } from '../context/UserContext';
 
 const LoginPage = () => {
   const { user, setUser } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
   const [samasya, setSamasya] = useState('');
 
   const auth = getAuth();
@@ -16,12 +16,11 @@ const LoginPage = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         setUser(userCredential.user);
         localStorage.setItem('user', JSON.stringify(userCredential.user));
-        // ...
       })
       .catch((error) => {
+        console.error(error);
         setSamasya(error.message.slice(22, -2));
       });
   };
@@ -49,9 +48,7 @@ const LoginPage = () => {
           <input
             type="text"
             name="email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            ref={emailRef}
             className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
           <label htmlFor="password" className="mt-3 tb:mt-5 text-md tb:text-xl">
@@ -60,13 +57,18 @@ const LoginPage = () => {
           <input
             type="password"
             name="pass"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            ref={passwordRef}
             className="mt-1 tb:mt-2 w-86 h-7 tb:h-8 rounded-md border border-opacity-20 border-secondary-lightgray focus:outline-none p-4"
           ></input>
           <button
-            onClick={(e) => handleLogin(e, auth, email, password)}
+            onClick={(e) =>
+              handleLogin(
+                e,
+                auth,
+                emailRef.current.value,
+                passwordRef.current.value
+              )
+            }
             className="mt-4 tb:mt-8 w-28 tb:w-36 h-8 tb:h-10 bg-secondary-red items-center rounded-md shadow-md text-primary text-md tb:text-xl font-medium"
           >
             Submit
