@@ -10,102 +10,104 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const { user } = useContext(UserContext);
   return (
-    <div className="w-screen min-h shadow-2xl font-sans bg-primary p-6">
-      <div className="flex flex-row-3 place-content-between">
-        <div className="flex text-2xl items-start flex-col ml-16">
-          <div>Follow us on:</div>
-          <div className="flex flex-row mt-5 mb-8">
-            <a href="https://www.instagram.com/dribbble/">
+    <footer className="w-screen min-h shadow-2xl font-sans bg-primary p-6">
+      <section className="flex flex-col tb:flex-row tb:place-content-between">
+        <section className="flex text-lg tb:text-lg lp:text-2xl items-start flex-col tb:ml-10 lp:ml-16">
+          <p className='tb:mt-4'>Follow us on:</p>
+          <article className="flex flex-row mb-4 mt-3 lp:mt-3 lp:mb-7">
+            <a href="https://www.instagram.com/dribbble/" target="_blank">
               <img src={InstLogo} alt="instlogo" className="w-7 h-7" />
             </a>
-            <a href="https://www.facebook.com/MicrosoftIndia">
+            <a href="https://www.facebook.com/MicrosoftIndia" target="_blank">
               <img src={FbLogo} alt="fblogo" className="w-7 h-7 ml-3" />
             </a>
-            <a href="https://www.linkedin.com/company/figma/">
+            <a href="https://www.linkedin.com/company/figma/" target="_blank">
               <img src={LinLogo} alt="linlogo" className="w-7 h-7 ml-3" />
             </a>
-            <a href="https://twitter.com/VisualStudio">
+            <a href="https://twitter.com/VisualStudio" target="_blank">
               <img
                 src={TwitterLogo}
                 alt="twitterlogo"
                 className="w-7 h-7 ml-3"
               />
             </a>
-          </div>
-          <div className="mb-5">Join our community at:</div>
-          <div>
+          </article>
+          <p className="mb-2 lp:mb-3">Join our community at:</p>
+          <article>
             <img src={DisLogo} alt="dislogo" className="w-9 h-9 inline-block" />
-            <a href="https://discord.gg/HDwq7WeQ">
-              <span className="text-xl uppercase ml-3">Discord</span>
+            <a href="https://discord.gg/HDwq7WeQ" target="_blank">
+              <span className="text-md lp:text-xl uppercase ml-3">Discord</span>
             </a>
-          </div>
-        </div>
-        <div className="flex text-xl items-start flex-col mr-20">
-          <div className="text-2xl">Courses</div>
+          </article>
+        </section>
+        <section className="flex text-md mt-4 lp:text-xl items-start flex-col tb:mr-15 lp:mr-20">
+          <p className="text-lg lp:text-2xl">Courses</p>
           {user ? (
             <Link to="/courses">
-              <div>
-                <div className="mt-3">Learn Frontend</div>
-                <div className="mt-2">Learn Backend</div>
-                <div className="mt-2">Learn Database</div>
-                <div className="mt-2">Learn Git & Github</div>
-              </div>
+              <ul>
+                <li className="mt-1 tb:mt-3">Learn Frontend</li>
+                <li className="mt-2">Learn Backend</li>
+                <li className="mt-2">Learn Database</li>
+                <li className="mt-2">Learn Git & Github</li>
+              </ul>
             </Link>
           ) : (
             <Link to="/signup">
-              <div>
-                <div className="mt-3">Learn Frontend</div>
-                <div className="mt-2">Learn Backend</div>
-                <div className="mt-2">Learn Database</div>
-                <div className="mt-2">Learn Git & Github</div>
-              </div>
+              <ul>
+                <li className="mt-1 tb:mt-3">Learn Frontend</li>
+                <li className="mt-2">Learn Backend</li>
+                <li className="mt-2">Learn Database</li>
+                <li className="mt-2">Learn Git & Github</li>
+              </ul>
             </Link>
           )}
-        </div>
-        <div className="flex flex-col text-xl items-start mr-16">
-          <div className="text-2xl">Resources</div>
-          {user ? (
-            <Link to="/books">
-              <div className="mt-3">Reference Books</div>
-            </Link>
-          ) : (
-            <Link to="/signup">
-              <div className="mt-3">Reference Books</div>
-            </Link>
-          )}
-          {user ? (
-            <Link to="/quiz">
-              <div className="mt-2">Fun Quizzes</div>
-            </Link>
-          ) : (
-            <Link to="/signup">
-              <div className="mt-2">Fun Quizzes</div>
-            </Link>
-          )}
-          {user ? (
-            <Link to="/roadmap">
-              <div className="mt-2">Roadmap for Full-Stack</div>
-            </Link>
-          ) : (
-            <Link to="/signup">
-              <div className="mt-2">Roadmap for Full-Stack</div>
-            </Link>
-          )}
-          {user ? (
-            <Link to="/courses">
-              <div className="mt-2">Projects</div>
-            </Link>
-          ) : (
-            <Link to="/signup">
-              <div className="mt-2">Projects</div>
-            </Link>
-          )}
-        </div>
-      </div>
-      <div className="flex justify-center text-xl mt-4">
+        </section>
+        <section className="flex flex-col text-md lp:text-xl items-start tb:mr-10 lp:mr-16">
+          <p className="text-lg mt-4 lp:text-2xl">Resources</p>
+          <ul>
+            {user ? (
+              <Link to="/books">
+                <li className="mt-1 tb:mt-3">Reference Books</li>
+              </Link>
+            ) : (
+              <Link to="/signup">
+                <li className="mt-1 tb:mt-3">Reference Books</li>
+              </Link>
+            )}
+            {user ? (
+              <Link to="/quiz">
+                <li className="mt-2">Fun Quizzes</li>
+              </Link>
+            ) : (
+              <Link to="/signup">
+                <li className="mt-2">Fun Quizzes</li>
+              </Link>
+            )}
+            {user ? (
+              <Link to="/roadmap">
+                <li className="mt-2">Roadmap for Full-Stack</li>
+              </Link>
+            ) : (
+              <Link to="/signup">
+                <li className="mt-2">Roadmap for Full-Stack</li>
+              </Link>
+            )}
+            {user ? (
+              <Link to="/courses">
+                <li className="mt-2">Projects</li>
+              </Link>
+            ) : (
+              <Link to="/signup">
+                <li className="mt-2">Projects</li>
+              </Link>
+            )}
+          </ul>
+        </section>
+      </section>
+      <p className="flex justify-center text-md tb:text-xl mt-5 tb:mt-7">
         © 2021 CodeHub Technologies Pvt. Ltd.
-      </div>
-    </div>
+      </p>
+    </footer>
   );
 };
 
