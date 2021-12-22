@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { storage, vidRef } from '../firebase';
 import { ref, getDownloadURL, listAll } from 'firebase/storage';
 import { VideoIdContext } from '../context/VideoIdContext';
+import DropNav from '../components/DropNav';
 
 const VideoPage = () => {
   const { videoId, setVideoId } = useContext(VideoIdContext);
@@ -37,7 +38,8 @@ const VideoPage = () => {
       });
   };
   return (
-    <div className="bg-primary h-screen">
+    <div className="bg-primary h-screen overflow-x-hidden">
+      <DropNav />
       <Navbar setVideoId={setVideoId} />
       <button onClick={(e) => handleCall(e)}>
         {loading ? (

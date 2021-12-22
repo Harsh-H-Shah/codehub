@@ -6,10 +6,12 @@ import Frontendsvg from '../static/CoverSvg/Frontend.svg';
 import Backendsvg from '../static/CoverSvg/Backend.svg';
 import Databasesvg from '../static/CoverSvg/Database.svg';
 import Githubsvg from '../static/CoverSvg/Github.svg';
+import DropNav from '../components/DropNav';
 
 const RoadmapPage = () => {
   return (
-    <div className="flex flex-col bg-primary">
+    <div className="flex flex-col bg-primary overflow-x-hidden">
+      <DropNav/>
       <Navbar />
       <div className="flex flex-row items-center place-content-between">
         <div className="flex flex-col">
