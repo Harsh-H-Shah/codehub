@@ -4,10 +4,12 @@ import Navbar from '../components/Navbar';
 import Laptoplogo from '../static/CoverSvg/Laptop.svg';
 import CoursesCard from '../components/CoursesCard';
 import db from '../resources/Db';
+import DropNav from '../components/DropNav';
 
 const CoursesPage = () => {
   return (
-    <div className="flex flex-col justify-center bg-primary">
+    <div className="flex flex-col overflow-x-hidden justify-center bg-primary">
+      <DropNav />
       <Navbar />
       <div className="flex flex-row place-content-between mt-16 -mb-12">
         <div className=" flex place-items-center w-max text-secondary-darkgray font-serif text-6xl justify-start ml-10 pb-32 z-0">

@@ -34,6 +34,7 @@ module.exports = {
       md: '0 8px 25px -7px rgba(0, 0, 0, 0.4)',
       inner: 'inset 0 0 20px 2px rgba(0, 0, 0, 0.3)',
       pn: '0 10px 15px 5px rgba(0, 0, 0, 0.2)',
+      sm: '0 5px 10px 0px rgba(0, 0, 0, 0.1)',
     },
   },
   variants: {

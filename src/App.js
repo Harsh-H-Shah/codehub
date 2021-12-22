@@ -20,7 +20,6 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setUser(JSON.parse(localStorage.getItem('user')));
-      console.log(user);
     }
   }, []);
   return (

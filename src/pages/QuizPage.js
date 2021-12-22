@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import DropNav from '../components/DropNav';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import QuizList from '../components/QuizList';
@@ -9,7 +10,8 @@ import PlayQuizPage from './PlayQuizPage';
 const QuizPage = () => {
   const { selectQuiz } = useContext(SelectQuizContext);
   return (
-    <div className="flex flex-col items-center text-secondary-lightgray w-screen">
+    <div className="flex flex-col overflow-x-hidden items-center text-secondary-lightgray w-screen">
+      <DropNav />
       <Navbar />
       {selectQuiz ? (
         <PlayQuizPage selectQuiz={selectQuiz} />

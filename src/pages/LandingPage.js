@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import DropNav from '../components/DropNav';
 import CoursesCard from '../components/CoursesCard';
 
 import Wave from '../static/CoverSvg/WaveSVG.svg';
@@ -19,6 +20,7 @@ const LandingPage = () => {
   return (
     <div className="w-screen flex flex-col justify-center items-center select-none overflow-x-hidden bg-primary">
       <Navbar />
+      <DropNav />
       <img src={Wave} draggable="false" alt="Wave" className="z-0 w-screen" />
       <div className="w-11/12 flex -mt-96">
         <div className="w-screen flex flex-col justify-self-start z-10">
