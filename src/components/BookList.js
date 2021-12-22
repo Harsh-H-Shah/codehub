@@ -31,23 +31,22 @@ const BookList = () => {
   }
 
   return (
-    <div className="flex flex-col bg-primary rounded-lg justify-center w-3/4 mt-16 z-20 shadow-pn mb-32">
+    <ul className="flex flex-col bg-primary rounded-lg justify-center w-11/12 tb:w-3/4 mt-4 tb:mt-12 lp:mt-16 z-20 shadow-pn mb-8 tb:mb-32">
       {references.map((ref, idx) => {
         let link = 'gs://' + ref._location.bucket + '/' + ref._location.path_;
         return (
-          <div key={idx}>
-            <ListItem
-              title={ref.name.slice(0, -4)}
-              idx={idx}
-              link={link}
-              index={index}
-              downurl={downurl}
-              handleSubmit={handleSubmit}
-            />
-          </div>
+          <ListItem
+            title={ref.name.slice(0, -4)}
+            idx={idx}
+            key={idx}
+            link={link}
+            index={index}
+            downurl={downurl}
+            handleSubmit={handleSubmit}
+          />
         );
       })}
-    </div>
+    </ul>
   );
 };
 
