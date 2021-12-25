@@ -24,7 +24,7 @@ const BooksPage = () => {
           src={Book}
           alt="Book"
           draggable="false"
-          className="tb:mt-8 lp:mt-14 hidden tb:block ml-10 lp:ml-32 tb:w-3/5 lp-w-full"
+          className="tb:mt-8 lp:mt-14 hidden tb:block ml-10 lp:ml-32 tb:w-3/5 lp:w-1/2"
         />
       </article>
       <p className="font-serif font-extralight text-secondary-darkgray mt-4 tb:mt-0 text-3xl tb:text-4xl lp:text-5xl dp:text-6xl">

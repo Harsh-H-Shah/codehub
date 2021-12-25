@@ -19,13 +19,13 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
     setQuizState('result');
   };
   return (
-    <div className="flex flex-col  mt-20 mb-20 rounded-md w-1/2 text-secondary-darkgray text-2xl p-10 bg-primary shadow-pn">
-      <h1 className="text-3xl font-medium mb-3">
+    <section className="flex flex-col bg-primary rounded-lg justify-center w-11/12 p-4 tb:p-8 lp:p-10 dp:p-14 tb:w-3/4 mt-4 tb:mt-12 lp:mt-16 z-20 shadow-pn mb-8 tb:mb-32">
+      <h1 className="text-lg tb:text-xl lp:text-3xl font-medium mb-3">
         {list[currentQuestion].title}
       </h1>
-      <div className="flex flex-col text-left w-full ">
+      <section className="flex flex-col text-left w-full ">
         <button
-          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red"
+          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red mb:focus:bg-secondary-red"
           onClick={() => {
             setOptionChosen('optionA');
           }}
@@ -33,7 +33,7 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
           {list[currentQuestion].optionA}
         </button>
         <button
-          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red"
+          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red mb:focus:bg-secondary-red"
           onClick={() => {
             setOptionChosen('optionB');
           }}
@@ -41,7 +41,7 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
           {list[currentQuestion].optionB}
         </button>
         <button
-          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red"
+          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red mb:focus:bg-secondary-red"
           onClick={() => {
             setOptionChosen('optionC');
           }}
@@ -49,25 +49,25 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
           {list[currentQuestion].optionC}
         </button>
         <button
-          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red"
+          className="self-start hover:bg-secondary-lightred hover:bg-opacity-25 rounded-md py-2 px-6 focus:bg-secondary-red mb:focus:bg-secondary-red"
           onClick={() => {
             setOptionChosen('optionD');
           }}
         >
           {list[currentQuestion].optionD}
         </button>
-      </div>
+      </section>
 
       {currentQuestion == list.length - 1 ? (
         <button
-          className="mt-8 w-max h-max p-3 bg-secondary-red items-center rounded-md shadow-md text-primary font-medium"
+          className="w-32 tb:w-40 text-sm mt-2 tb:mt-4 lp:mt-8 dp:mt-10 tb:text-xl h-8 tb:h-10 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary"
           onClick={finishQuiz}
         >
           Finish Quiz
         </button>
       ) : (
         <button
-          className="mt-8 w-max h-max p-3 bg-secondary-red items-center rounded-md shadow-md text-primary"
+          className="w-32 tb:w-40 text-sm mt-2 tb:mt-4 lp:mt-8 dp:mt-10 tb:text-xl h-8 tb:h-10 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary"
           disabled={!optionChosen}
           onClick={nextQuestion}
           id="nextQuestion"
@@ -75,7 +75,7 @@ const QuestionDisplay = ({ setQuizState, score, setScore, list }) => {
           Next Question
         </button>
       )}
-    </div>
+    </section>
   );
 };
 

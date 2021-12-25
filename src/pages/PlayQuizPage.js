@@ -4,11 +4,11 @@ import EndScreen from '../components/EndScreen';
 import { Quizzes } from '../resources/Questions';
 
 const PlayQuizPage = ({ selectQuiz }) => {
-  const list = Quizzes[selectQuiz-1].questions;
+  const list = Quizzes[selectQuiz - 1].questions;
   const [score, setScore] = useState(0);
   const [quizState, setQuizState] = useState('display');
   return (
-    <div className='w-screen flex justify-center'>
+    <section className="w-screen flex justify-center">
       {quizState === 'display' ? (
         <QuestionDisplay
           selectQuiz={selectQuiz}
@@ -18,9 +18,14 @@ const PlayQuizPage = ({ selectQuiz }) => {
           list={list}
         />
       ) : (
-        <EndScreen score={score} setScore={setScore} setQuizState={setQuizState} list={list} />
+        <EndScreen
+          score={score}
+          setScore={setScore}
+          setQuizState={setQuizState}
+          list={list}
+        />
       )}
-    </div>
+    </section>
   );
 };
 

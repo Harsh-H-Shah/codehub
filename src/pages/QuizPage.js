@@ -10,34 +10,36 @@ import PlayQuizPage from './PlayQuizPage';
 const QuizPage = () => {
   const { selectQuiz } = useContext(SelectQuizContext);
   return (
-    <div className="flex flex-col overflow-x-hidden items-center text-secondary-lightgray w-screen">
+    <section className="flex flex-col overflow-x-hidden items-center text-secondary-lightgray w-screen">
       <DropNav />
       <Navbar />
       {selectQuiz ? (
         <PlayQuizPage selectQuiz={selectQuiz} />
       ) : (
-        <div className="flex flex-col w-screen">
-          <div className="flex flex-row place-content-between">
-            <div className="flex flex-col ml-10 justify-center -mt-16">
-              <p className="text-7xl font-serif font-semibold mb-10">
+        <section className="flex flex-col w-screen">
+          <article className="flex-row place-content-between hidden tb:flex">
+            <span className="flex flex-col ml-4 tb:ml-10 lp:ml-14 dp:ml-16 justify-center">
+              <p className="font-serif font-semibold mb-2 lp:mb-6 dp:mb-10 text-3xl tb:text-4xl lp:text-5xl dp:text-6xl mt-8 tb:mt-0 ">
                 Catch it and quiz it!
               </p>
-              <p className="text-2xl font-sans font-normal ml-2">
+              <p className="text-lg tb:text-xl lp:text-2xl dp:text-2xl font-sans text-secondary-darkgray mt-3 tb:mt-6">
                 Buckle up and unlock your memory.
               </p>
-            </div>
-            <img src={Quiz} alt="quiz" className="w-5/12 mt-16" />
-          </div>
-          <div className="flex flex-col w-screen">
-            <p className="text-6xl text-center font-serif font-semibold">
-              Fun Quizzes
-            </p>
-            <QuizList />
-          </div>
+            </span>
+            <img
+              src={Quiz}
+              alt="quiz"
+              className="tb:mt-8 lp:mt-14 lp:ml-32 tb:w-1/2 lp:w-5/12 dp:w-2/5 dp:mr-10"
+            />
+          </article>
+          <p className="text-center font-serif font-semibold mt-4 tb:mt-0 text-3xl tb:text-4xl lp:text-5xl dp:text-6xl">
+            Fun Quizzes
+          </p>
+          <QuizList />
           <Footer />
-        </div>
+        </section>
       )}
-    </div>
+    </section>
   );
 };
 
