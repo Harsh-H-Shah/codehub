@@ -4,14 +4,16 @@ import { SelectQuizContext } from '../context/SelectQuizContext';
 const EndScreen = ({ score, setScore, setQuizState, list }) => {
   const { setSelectQuiz } = useContext(SelectQuizContext);
   return (
-    <div className="flex flex-col items-center justify-center mt-60 text-secondary-darkgray font-sans">
-      <h1 className="font-serif text-6xl mb-5 font-medium">Congratulations!</h1>
-      <h1 className="text-3xl mb-5">
+    <section className="flex flex-col items-center justify-center mt-10 tb:mt-40 lp:mt-52 dp:mt-60 text-secondary-darkgray font-sans">
+      <h1 className="font-serif font-semibold mb-2 lp:mb-6 dp:mb-10 text-3xl tb:text-4xl lp:text-5xl dp:text-6xl tb:mt-0">
+        Congratulations!
+      </h1>
+      <h1 className="text-xl tb:text-3xl mb-5">
         You got {score} out of {list.length}
       </h1>
-      <div className="flex flex-row">
+      <span className="flex flex-row items-center justify-center">
         <button
-          className="text-2xl px-4 py-2 font-medium w-max h-max bg-secondary-red items-center rounded-md shadow-md text-primary"
+          className="w-20 tb:w-40 text-sm tb:text-2xl h-8 tb:h-12 mr-3 tb:mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary"
           onClick={() => {
             setScore(0);
             setQuizState('display');
@@ -20,13 +22,13 @@ const EndScreen = ({ score, setScore, setQuizState, list }) => {
           Restart
         </button>
         <button
-          className="text-2xl px-4 py-2 ml-7 font-medium w-max h-max bg-secondary-red items-center rounded-md shadow-md text-primary"
+          className="w-32 tb:w-56 text-sm tb:text-2xl h-8 tb:h-12 mr-3 tb:mr-8 bg-secondary-red items-center rounded-md font-medium shadow-md text-primary"
           onClick={() => setSelectQuiz(0)}
         >
           Back to quizzes
         </button>
-      </div>
-    </div>
+      </span>
+    </section>
   );
 };
 
