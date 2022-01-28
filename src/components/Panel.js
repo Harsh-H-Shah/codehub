@@ -7,16 +7,16 @@ import QALogo from '../static/panel-logo/Q&A.svg';
 
 const Panel = () => {
   return (
-    <div>
-      <div className="flex flex-row w-screen bg-secondary-brightred h-72 items-center justify-center shadow-inner">
-        <div className="flex flex-row place-content-between w-2/3">
+    <>
+      <section className="flex flex-row items-center justify-center w-screen bg-secondary-brightred h-72 shadow-inner">
+        <span className="flex flex-row w-2/3 justify-between">
           <PanelCard img={BookLogo} title={'Books'} />
           <PanelCard img={CourseLogo} title={'Courses'} />
           <PanelCard img={QuizLogo} title={'Quizzes'} />
           <PanelCard img={QALogo} title={'Q&A'} />
-        </div>
-      </div>
-    </div>
+        </span>
+      </section>
+    </>
   );
 };
 
