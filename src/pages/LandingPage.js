@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import DropNav from '../components/DropNav';
 import CoursesCard from '../components/CoursesCard';
+import Panel from '../components/Panel';
 
 import Wave from '../static/CoverSvg/WaveSVG.svg';
 import Notes from '../static/logos/Noteslogo.svg';
@@ -13,7 +15,6 @@ import Support from '../static/logos/Communitylogo.svg';
 
 import { LandingCourses } from '../resources/LandingCourses';
 import { UserContext } from '../context/UserContext';
-import Panel from '../components/Panel';
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
@@ -33,9 +34,13 @@ const LandingPage = () => {
             Get personalised courses <br /> specially curated for you.
           </p>
           {user ? (
-            <button className="w-60 h-14 mt-12 bg-secondary-lightred items-center tracking-wide shadow-md text-primary font-sans text-2xl font-medium">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-60 h-14 mt-12 bg-secondary-lightred items-center tracking-wide shadow-md text-primary font-sans text-2xl font-medium"
+            >
               <Link to="/courses">Start learning</Link>
-            </button>
+            </motion.button>
           ) : (
             <button className="w-60 h-14 mt-12 bg-secondary-lightred items-center tracking-wide shadow-md text-primary font-sans text-2xl font-medium">
               <Link to="/signup">Start learning</Link>

@@ -7,7 +7,6 @@ import { getAuth, signOut } from 'firebase/auth';
 import { VideoIdContext } from '../context/VideoIdContext';
 import { SelectQuizContext } from '../context/SelectQuizContext';
 import { UserContext } from '../context/UserContext';
-import DropNav from './DropNav';
 
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
@@ -32,7 +31,6 @@ const Navbar = () => {
   };
 
   return (
-    // <DropNav />
     <nav className="hidden tb:w-screen tb:visible tb:flex tb:flex-row tb:place-content-between tb:h-16 tb:shadow-3xl tb:z-10 tb:bg-secondary-red tb:items-center tb:overscroll-none">
       <Link to="/">
         <img
@@ -90,7 +88,7 @@ const Navbar = () => {
             src={AccLogo}
             alt="Acc-logo"
             onClick={() => setDropdown(!dropdown)}
-            className="mt-0 mr-5 w-10 h-10 col-start-9 self-end cursor-pointer"
+            className="mr-5 w-10 h-10 self-end cursor-pointer"
           />
           {dropdown ? (
             <span className="flex flex-col font-sans rounded-md text-xl w-max h-max p-3 bg-primary -mb-36 z-20">

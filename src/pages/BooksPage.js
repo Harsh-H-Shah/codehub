@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import BookList from '../components/BookList';
 import DropNav from '../components/DropNav';
 import Footer from '../components/Footer';
@@ -20,7 +22,10 @@ const BooksPage = () => {
             Get books of top authors for free
           </p>
         </span>
-        <img
+        <motion.img
+          initial={{ x: '200%' }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5 }}
           src={Book}
           alt="Book"
           draggable="false"

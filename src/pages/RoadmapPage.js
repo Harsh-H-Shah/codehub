@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Map from '../static/CoverSvg/Map.svg';
@@ -23,7 +24,10 @@ const RoadmapPage = () => {
             exclusive paths.
           </h2>
         </article>
-        <img
+        <motion.img
+          initial={{ x: '200%' }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5 }}
           src={Map}
           alt="mapsvg"
           className="hidden w-96 h-96 lp:w-2/4 lp:h-2/4 tb:block mt-4 lp:mt-10"

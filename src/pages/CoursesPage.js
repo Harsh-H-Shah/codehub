@@ -5,6 +5,7 @@ import Laptoplogo from '../static/CoverSvg/Laptop.svg';
 import CoursesCard from '../components/CoursesCard';
 import db from '../resources/Db';
 import DropNav from '../components/DropNav';
+import { motion } from 'framer-motion';
 
 const CoursesPage = () => {
   return (
@@ -15,7 +16,14 @@ const CoursesPage = () => {
         <div className=" flex place-items-center w-max text-secondary-darkgray font-serif text-6xl justify-start ml-10 pb-32 z-0">
           Never put a full stop to learning and growth
         </div>
-        <img className="-mr-12" src={Laptoplogo} alt="laptoplogo" />
+        <motion.img
+          initial={{ x: '200%' }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5 }}
+          className="-mr-12"
+          src={Laptoplogo}
+          alt="laptoplogo"
+        />
       </div>
       <div className="m-10 flex flex-col place-self-start">
         <div className="text-secondary-darkgray font-serif text-4xl pb-14 py-7">

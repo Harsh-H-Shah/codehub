@@ -6,6 +6,7 @@ import QuizList from '../components/QuizList';
 import { SelectQuizContext } from '../context/SelectQuizContext';
 import Quiz from '../static/CoverSvg/Quiz.svg';
 import PlayQuizPage from './PlayQuizPage';
+import { motion } from 'framer-motion';
 
 const QuizPage = () => {
   const { selectQuiz } = useContext(SelectQuizContext);
@@ -26,7 +27,10 @@ const QuizPage = () => {
                 Buckle up and unlock your memory.
               </p>
             </span>
-            <img
+            <motion.img
+              initial={{ x: '200%' }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1.5 }}
               src={Quiz}
               alt="quiz"
               className="tb:mt-8 lp:mt-14 lp:ml-32 tb:w-1/2 lp:w-5/12 dp:w-2/5 dp:mr-10"
